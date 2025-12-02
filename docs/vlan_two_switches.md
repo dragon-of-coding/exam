@@ -55,46 +55,40 @@ vlan 10
 vlan 20
  name VLAN20
 exit
+
 На Switch2:
 
-text
-Копировать код
 enable
 conf t
 vlan 10
 vlan 20
 exit
+
 4. Настройка access-портов
 Switch1
 PC0 (VLAN 10):
 
-text
-Копировать код
 interface fa0/1
  switchport mode access
  switchport access vlan 10
 exit
+
 PC1 (VLAN 20):
 
-text
-Копировать код
 interface fa0/2
  switchport mode access
  switchport access vlan 20
 exit
+
 Switch2
 PC2 (VLAN 10):
 
-text
-Копировать код
 interface fa0/1
  switchport mode access
  switchport access vlan 10
 exit
 PC3 (VLAN 20):
 
-text
-Копировать код
 interface fa0/2
  switchport mode access
  switchport access vlan 20
@@ -102,8 +96,6 @@ exit
 5. Настройка trunk между коммутаторами
 На обоих коммутаторах:
 
-text
-Копировать код
 interface fa0/24
  switchport mode trunk
  switchport trunk allowed vlan 10,20
@@ -111,14 +103,9 @@ exit
 6. Проверка
 Работает:
 PC0 → PC2 (оба VLAN 10)
-
-nginx
-Копировать код
 ping 192.168.10.3
 PC1 → PC3 (оба VLAN 20)
 
-nginx
-Копировать код
 ping 192.168.20.3
 НЕ работает:
 PC0 → PC1 (разные VLAN)
